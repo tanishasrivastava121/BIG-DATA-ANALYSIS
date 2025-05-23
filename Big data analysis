@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import pandas as pd
+spark = SparkSession.builder \
+    .appName("Netflix Sentiment Analysis") \
+    .getOrCreate()
+
+spark.sparkContext.setLogLevel("ERROR")
+df = spark.read.csv("/kaggle/input/new-2-netflix-dataset", header=True, inferSchema=True)
+df.show(5)
+# Sentiment Distribution
+df.groupBy("sentiment_label").count().show()
+# Most Common Genres
+from pyspark.sql.functions import explode, split
+
+df_genre = df.withColumn("genre", explode(split("listed_in", ", ")))
+df_genre.groupBy("genre").count().orderBy("count", ascending=False).show(10)
+#Average Sentiment Score by Genre
+df_genre.groupBy("genre").avg("sentiment").orderBy("avg(sentiment)", ascending=False).show(10)
