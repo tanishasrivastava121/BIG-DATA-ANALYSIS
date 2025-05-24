@@ -72,3 +72,6 @@ Applied transformations to generate meaningful KPIs and metrics.
 
 Conclusion
 This project demonstrates how big data tools like Apache Spark can be applied to media streaming datasets to derive actionable insights. By using the Kaggle platform for computation and storage, this analysis remains reproducible and easily shareable. The insights from this project could help inform content strategy, personalization, and recommendation systems for streaming services.
+
+Output
+![Image](https://github.com/user-attachments/assets/3af97aa2-5953-4248-bfff-dec6aad717c7)
